@@ -1269,3 +1269,28 @@ h6 {
 .text-primary {
   color: #f1ce2d!important;
 }
+.video-container {
+  position: relative;
+  display: inline-block;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  background-color: #f1ce2d;
+  border: none;
+  color: white;
+  font-size: 100px;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 50%;
+}
+
+.play-button:hover {
+  background-color:#d2b32a;
+}
+
+#playButton.hidden {
+  display: none;
+}
