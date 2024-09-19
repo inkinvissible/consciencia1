@@ -1291,6 +1291,10 @@ h6 {
   background-color:#d2b32a;
 }
 
-#playButton.hidden {
+#playButtonManu.hidden {
+  display: none;
+}
+
+#playButtonCris.hidden {
   display: none;
 }
