@@ -43,9 +43,11 @@ h6 {
 .bg-black {
   background: #000 !important;
 }
-.yellow{
+
+.yellow {
   color: #bd9a00;
 }
+
 .site-wrap:before {
   -webkit-transition: .3s all ease-in-out;
   -o-transition: .3s all ease-in-out;
@@ -1056,20 +1058,23 @@ h6 {
 .blog .media>a {
   width: 40%;
 }
-.logo{
+
+.logo {
   width: 100px;
 }
+
 @media (max-width: 767.98px) {
   .blog .media>a {
     width: 100%;
     margin-bottom: 30px;
   }
 
-  .logo{
+  .logo {
     width: 50px;
   }
-  .class-heading{
-    font-size: 10px!important;
+
+  .class-heading {
+    font-size: 10px !important;
   }
 }
 
@@ -1256,19 +1261,23 @@ h6 {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
 .btn-primary {
   background: #f1ce2d;
-  color: #000!important;
+  color: #000 !important;
   border: 2px solid #f1ce2d;
 }
+
 .btn-primary:hover {
   background: #000;
   color: black;
   border: 2px solid #f1ce2d;
 }
+
 .text-primary {
-  color: #f1ce2d!important;
+  color: #f1ce2d !important;
 }
+
 .video-container {
   position: relative;
   display: inline-block;
@@ -1288,7 +1297,7 @@ h6 {
 }
 
 .play-button-team:hover {
-  background-color:#d2b32a;
+  background-color: #d2b32a;
 }
 
 #playButtonManu.hidden {
@@ -1297,4 +1306,10 @@ h6 {
 
 #playButtonCris.hidden {
   display: none;
+}
+
+.sanacionCarouselImg {
+  object-fit: cover;
+  height: 280px;
+  object-position: 50% 40%;
 }
