@@ -1,4 +1,9 @@
 /* Base */
+@font-face {
+  font-family: aspal;
+  src: url(aspal.otf);
+}
+
 body {
   line-height: 1.7;
   color: gray;
@@ -34,6 +39,7 @@ h4,
 h5,
 h6 {
   color: #000;
+  font-family: aspal;
 }
 
 .text-black {

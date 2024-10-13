@@ -332,7 +332,35 @@
       </div>
     </div>
   </section>
+  <section class="site-section">
+    <div class="row">
+      <div class="col-12 heading-wrap text-center mb-5">
+        <h2 class="mb-5">Recibí nuestros cursos gratis</h2>
+      </div>
+    </div>
+    <div class="container border shadow-lg p-4 rounded">
+      <form onsubmit="sendWhatsAppMessage(); return false;">
 
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" class="form-control ">
+          </div>
+          <div class="col-md-6 form-group">
+            <label for="phone">Email</label>
+            <input type="text" id="email" class="form-control ">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <button class="btn btn-primary">Quiero recibir los cursos gratis</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+  </section>
   <section class="site-section" id="gallery-section">
     <div class="container">
 
@@ -448,7 +476,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-          <form action="#" method="post">
+          <form onsubmit="sendContactWhatsAppMessage(); return false;">
             <div class="row">
               <div class="col-md-6 form-group">
                 <label for="name">Nombre</label>
@@ -645,7 +673,7 @@
 
         <div class="col-lg-4 mb-5 mb-lg-0">
 
-          
+
 
           <div class="row">
             <div class="col-md-12">
@@ -684,6 +712,26 @@
 
   <script src="js/jquery.fancybox.min.js"></script>
   <script src="js/main.js"></script>
+  <script>
+    function sendWhatsAppMessage() {
+      event.preventDefault();
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+      var message = `¡Hola! Quiero recibir los cursos gratis! Mi nombre es ${name} y mi email es ${email}.`;
+      var url = `https://api.whatsapp.com/send?phone=+5491125690777&text=${encodeURIComponent(message)}`;
+      window.location.href = url;
+    }
+    function sendContactWhatsAppMessage() {
+      event.preventDefault();
+      var name = document.getElementById('name').value;
+      var phone = document.getElementById('phone').value;
+      var email = document.getElementById('email').value;
+      var message = document.getElementById('message').value;
+      var fullMessage = `¡Hola! Me comunico desde el sitio de consciencia emunah. Mis datos: Nombre: ${name}, Celular: ${phone}, Email: ${email}. Mi consulta: ${message}.`;
+      var url = `https://api.whatsapp.com/send?phone=+5491125690777&text=${encodeURIComponent(fullMessage)}`;
+      window.open(url, '_blank');
+    }
+  </script>
 
 </body>
 
