@@ -590,6 +590,33 @@
     </div>
 </section>
 
+<section class="about-section py-5" style="background-color: #000;">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Text content -->
+            <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
+                <div class="about-content p-4 text-white">
+                    <h2 class="text-primary mb-4">Sobre Nosotros</h2>
+                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempor interdum sem,
+                        eget bibendum libero interdum eget. Curabitur risus mi, dapibus sed massa sit amet, semper
+                        hendrerit velit. Duis condimentum metus et lacus mollis pretium. Vestibulum luctus dictum
+                        euismod. Phasellus vel elementum metus, eget tincidunt libero.</p>
+                    <a href="" class="btn btn-primary px-4 py-2">Conocenos</a>
+                </div>
+            </div>
+
+            <!-- Image -->
+            <div class="col-lg-6 col-md-12">
+                <div class="about-image-container p-3">
+                    <img src="images/talleres4.jpg" alt="Manuel y Cristian en el retiro"
+                         class="img-fluid rounded shadow" style="width: 100%; object-fit: cover; max-height: 400px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 <section class="site-section element-animate" id="contact-section">
     <div class="mb-5">
         <div class="container-fluid">
@@ -869,7 +896,7 @@
 <script src="js/main.js"></script>
 <script>
     // Initialize Isotope when document is fully loaded
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Initialize Isotope with proper settings
         var $grid = $('#posts').isotope({
             itemSelector: '.item',
@@ -881,14 +908,14 @@
         });
 
         // Reveal items after they're arranged
-        $grid.imagesLoaded().progress(function() {
+        $grid.imagesLoaded().progress(function () {
             $grid.isotope('layout');
         });
 
         // Filter items on button click
-        $('#filters').on('click', 'button', function() {
+        $('#filters').on('click', 'button', function () {
             var filterValue = $(this).attr('data-filter');
-            $grid.isotope({ filter: filterValue });
+            $grid.isotope({filter: filterValue});
 
             // Update active button class
             $('#filters button').removeClass('active');

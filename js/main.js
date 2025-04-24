@@ -346,4 +346,56 @@ jQuery(document).ready(function ($) {
 });
 
 
+// Wait for the DOM to fully load
+document.addEventListener("DOMContentLoaded", function () {
+	// Tab navigation for mobile
+	const tabs = document.querySelectorAll(".content-tabs .nav-link");
+	const tabContents = document.querySelectorAll(".tab-pane");
 
+	tabs.forEach((tab) => {
+		tab.addEventListener("click", function () {
+			// Remove active class from all tabs and tab contents
+			tabs.forEach((t) => t.classList.remove("active"));
+			tabContents.forEach((content) => content.classList.remove("show", "active"));
+
+			// Add active class to the clicked tab and corresponding content
+			this.classList.add("active");
+			const target = document.querySelector(this.getAttribute("data-bs-target"));
+			target.classList.add("show", "active");
+		});
+	});
+
+	// Add active state to journey items on scroll
+	const journeyItems = document.querySelectorAll(".journey-item");
+	const observer = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add("active");
+				} else {
+					entry.target.classList.remove("active");
+				}
+			});
+		},
+		{ threshold: 0.5 } // Trigger when 50% of the item is visible
+	);
+
+	journeyItems.forEach((item) => observer.observe(item));
+
+	// Smooth scrolling for navigation links
+	const navLinks = document.querySelectorAll(".nav-link");
+	navLinks.forEach((link) => {
+		link.addEventListener("click", function (e) {
+			e.preventDefault();
+			const targetId = this.getAttribute("href").substring(1);
+			const targetElement = document.getElementById(targetId);
+
+			if (targetElement) {
+				window.scrollTo({
+					top: targetElement.offsetTop - 100, // Adjust offset for fixed headers
+					behavior: "smooth",
+				});
+			}
+		});
+	});
+});
