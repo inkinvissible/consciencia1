@@ -400,63 +400,65 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 });
 
-// Enhanced cross-page navigation with section scrolling
-document.addEventListener("DOMContentLoaded", function() {
-	// Get all navigation links that might point to homepage sections
-	const sectionLinks = document.querySelectorAll('header a[href^="index.html#"], header a[href^="#"]');
 
-	sectionLinks.forEach(link => {
+document.addEventListener("DOMContentLoaded", function() {
+	// Encuentra todos los enlaces de navegación
+	const navLinks = document.querySelectorAll('.site-menu .nav-link, .site-menu a');
+
+	navLinks.forEach(link => {
 		link.addEventListener('click', function(e) {
+			// Obtiene el href del enlace
 			const href = this.getAttribute('href');
 
-			// Check if we're on the homepage
-			const isHomePage = window.location.pathname.endsWith('index.html') ||
-				window.location.pathname.endsWith('/') ||
-				window.location.pathname.split('/').pop() === '';
-
-			// If link contains a hash (section identifier)
-			if (href.includes('#')) {
-				const sectionId = href.substring(href.indexOf('#'));
-
-				// If we're on homepage, try to scroll
-				if (isHomePage) {
-					const targetElement = document.querySelector(sectionId);
-
-					// Only prevent default if the target exists on this page
-					if (targetElement) {
-						e.preventDefault();
-						$('html, body').animate({
-							'scrollTop': $(targetElement).offset().top - 80
-						}, 1000, 'easeInOutCirc');
-					}
+			// Maneja enlaces a secciones en la misma página
+			if (href.startsWith('#')) {
+				e.preventDefault();
+				const targetSection = document.querySelector(href);
+				if (targetSection) {
+					window.scrollTo({
+						top: targetSection.offsetTop - 100,
+						behavior: 'smooth'
+					});
 				}
-				// If on another page, store the section to scroll to after navigation
-				else if (href.startsWith('#')) {
-					// For links like #gallery-section, prepend index.html
-					e.preventDefault();
-					sessionStorage.setItem('scrollToSection', sectionId);
-					window.location.href = 'index.html' + sectionId;
-				} else {
-					// For links already formatted as index.html#section
-					sessionStorage.setItem('scrollToSection', sectionId);
-				}
+			}
+			// Maneja enlaces a secciones en otras páginas (contienen # pero no al inicio)
+			else if (href.includes('#') && !href.startsWith('#')) {
+				e.preventDefault();
+				// Separa la URL base y el identificador de sección
+				const [baseUrl, sectionId] = href.split('#');
+				// Guarda la sección objetivo en sessionStorage
+				sessionStorage.setItem('scrollToSection', '#' + sectionId);
+				// Navega a la página base
+				window.location.href = baseUrl;
+			}
+			// Para enlaces normales a otras páginas sin secciones específicas
+			else {
+				// Deja que el comportamiento predeterminado funcione
+				// No es necesario preventDefault() aquí
+				return true;
+			}
+
+			// Cierra el menú móvil si está abierto
+			if (document.body.classList.contains('offcanvas-menu')) {
+				document.body.classList.remove('offcanvas-menu');
 			}
 		});
 	});
 
-	// Check if we need to scroll to a section after page load
+	// Verifica si hay que desplazarse a una sección después de cargar la página
 	const storedSection = sessionStorage.getItem('scrollToSection');
 	if (storedSection) {
-		// Wait for page to fully load
+		// Espera a que la página cargue completamente
 		setTimeout(() => {
 			const targetElement = document.querySelector(storedSection);
 			if (targetElement) {
-				$('html, body').animate({
-					'scrollTop': $(targetElement).offset().top - 80
-				}, 1000, 'easeInOutCirc');
+				window.scrollTo({
+					top: targetElement.offsetTop - 100,
+					behavior: 'smooth'
+				});
 			}
-			// Clear the stored section
+			// Limpia la sección almacenada
 			sessionStorage.removeItem('scrollToSection');
-		}, 800);
+		}, 1000);
 	}
 });
