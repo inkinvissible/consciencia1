@@ -1283,6 +1283,8 @@ h6 {
     border: 2px solid #f1ce2d;
 }
 
+
+
 .text-primary {
     color: #f1ce2d !important;
 }
@@ -3693,5 +3695,211 @@ h6 {
         width: 35px;
         height: 35px;
         font-size: 1rem;
+    }
+}
+
+.site-footer {
+    background-color: #303030;
+    color: rgba(255, 255, 255, 0.7);
+    position: relative;
+}
+
+.footer-heading {
+    color: #f1ce2d;
+    font-size: 1.25rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+.footer-heading:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 40px;
+    background-color: #f1ce2d;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #f1ce2d;
+    transform: translateX(5px);
+}
+
+.footer-contact a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+    color: #f1ce2d;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #f1ce2d;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: #f1ce2d;
+    color: #303030;
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary-dark {
+    background: #f1ce2d;
+    color: #000 !important;
+    border: 2px solid #f1ce2d;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.9em;
+    transition: ease-in-out 0.5s all;
+
+}
+
+.btn-primary-dark:hover, btn-primary-dark:focus, .btn-primary-dark:active {
+    color: white!important;
+    background-color: transparent !important;
+    transition: ease-in-out 0.5s all;
+}
+
+/* Equipo Section Styles */
+.equipo-bio-section {
+    background-color: #000;
+    padding: 40px 0;
+}
+
+.equipo-bio-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.equipo-bio-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Video Container Styles */
+.equipo-video-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.equipo-video-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.equipo-video-preview {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+}
+
+.equipo-video-expanded {
+    aspect-ratio: auto;
+    object-fit: contain;
+    background-color: #000;
+}
+
+.equipo-play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.equipo-play-overlay:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.equipo-play-icon {
+    width: 80px;
+    height: 80px;
+    fill: #f1ce2d;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s ease;
+}
+
+.equipo-play-overlay:hover .equipo-play-icon {
+    transform: scale(1.1);
+}
+
+.equipo-video-fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .equipo-bio-section {
+        padding: 30px 0;
+    }
+
+    .equipo-video-preview {
+        aspect-ratio: 16/9;
+    }
+
+    .equipo-play-icon {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 767px) {
+    .equipo-bio-section {
+        padding: 20px 0;
+    }
+
+    .equipo-play-icon {
+        width: 50px;
+        height: 50px;
     }
 }

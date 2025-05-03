@@ -399,3 +399,64 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 	});
 });
+
+// Enhanced cross-page navigation with section scrolling
+document.addEventListener("DOMContentLoaded", function() {
+	// Get all navigation links that might point to homepage sections
+	const sectionLinks = document.querySelectorAll('header a[href^="index.html#"], header a[href^="#"]');
+
+	sectionLinks.forEach(link => {
+		link.addEventListener('click', function(e) {
+			const href = this.getAttribute('href');
+
+			// Check if we're on the homepage
+			const isHomePage = window.location.pathname.endsWith('index.html') ||
+				window.location.pathname.endsWith('/') ||
+				window.location.pathname.split('/').pop() === '';
+
+			// If link contains a hash (section identifier)
+			if (href.includes('#')) {
+				const sectionId = href.substring(href.indexOf('#'));
+
+				// If we're on homepage, try to scroll
+				if (isHomePage) {
+					const targetElement = document.querySelector(sectionId);
+
+					// Only prevent default if the target exists on this page
+					if (targetElement) {
+						e.preventDefault();
+						$('html, body').animate({
+							'scrollTop': $(targetElement).offset().top - 80
+						}, 1000, 'easeInOutCirc');
+					}
+				}
+				// If on another page, store the section to scroll to after navigation
+				else if (href.startsWith('#')) {
+					// For links like #gallery-section, prepend index.html
+					e.preventDefault();
+					sessionStorage.setItem('scrollToSection', sectionId);
+					window.location.href = 'index.html' + sectionId;
+				} else {
+					// For links already formatted as index.html#section
+					sessionStorage.setItem('scrollToSection', sectionId);
+				}
+			}
+		});
+	});
+
+	// Check if we need to scroll to a section after page load
+	const storedSection = sessionStorage.getItem('scrollToSection');
+	if (storedSection) {
+		// Wait for page to fully load
+		setTimeout(() => {
+			const targetElement = document.querySelector(storedSection);
+			if (targetElement) {
+				$('html, body').animate({
+					'scrollTop': $(targetElement).offset().top - 80
+				}, 1000, 'easeInOutCirc');
+			}
+			// Clear the stored section
+			sessionStorage.removeItem('scrollToSection');
+		}, 800);
+	}
+});
