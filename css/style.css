@@ -1407,6 +1407,7 @@ h6 {
 
     .hero-bg-image {
         margin-top: 30px !important;
+        background-position: 73% 15% !important;
     }
 }
 
@@ -3901,5 +3902,85 @@ h6 {
     .equipo-play-icon {
         width: 50px;
         height: 50px;
+    }
+}
+
+/* Estilos para la sección de horarios */
+.schedule-options {
+    padding: 0 1.75rem 1.75rem;
+}
+
+.schedule-item {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.schedule-item:hover {
+    background-color: #303030;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-day {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.schedule-day i {
+    color: #f1ce2d;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.schedule-day h5 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.schedule-time {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.time-badge {
+    background-color: #f1ce2d;
+    color: #303030;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.time-or {
+    margin: 0 1rem;
+    font-weight: 600;
+}
+
+.schedule-divider {
+    text-align: center;
+    margin: 1rem 0;
+    font-weight: 600;
+    color: #777;
+}
+
+@media (max-width: 767px) {
+    .schedule-time {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .time-badge {
+        margin-bottom: 0.5rem;
+    }
+
+    .time-or {
+        margin: 0.5rem 0;
     }
 }
